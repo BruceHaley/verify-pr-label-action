@@ -225,7 +225,7 @@ else:
 # or exit with an error code. This is done independently of the presence of
 # invalid labels above.
 if not pr_valid_labels:
-    print('Error! This pull request does not contain any of the valid labels: '
+    print('Error! This pull request does not contain any of the required labels: '
           f'{valid_labels}', file=sys.stderr)
 
     # If reviews are disable, exit with an error code.
@@ -243,7 +243,7 @@ if not pr_valid_labels:
                  f'add one of the following labels: `{valid_labels}`',
             event='REQUEST_CHANGES')
 elif len(pr_valid_labels) > 1:
-    print('Error! This pull request contains too many of these labels: '
+    print('Error! This pull request contains more than one of these labels: '
           f'{pr_valid_labels}', file=sys.stderr)
 
     print('Exiting with an error code')
