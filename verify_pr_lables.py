@@ -242,8 +242,22 @@ if not pr_valid_labels:
             body='This pull request does not contain a valid label. Please '
                  f'add one of the following labels: `{valid_labels}`',
             event='REQUEST_CHANGES')
+elif len(pr_valid_labels) > 1:
+    print('Error! This pull request contains too many of these labels: '
+          f'{pr_valid_labels}', file=sys.stderr)
+
+    print('Exiting with an error code')
+    sys.exit(1)
 else:
-    print('This pull request contains the following valid labels: '
+    last_word = pr_valid_labels[0].split()[-1]
+    if last_word.lower() in repo_name.lower():
+        print('Error! Label may not target this repo: '
+            f'{pr_valid_labels}', file=sys.stderr)
+
+        print('Exiting with an error code')
+        sys.exit(1)
+    else:
+        print('This pull request contains the following valid label: '
           f'{pr_valid_labels}')
 
 # Finally, we check if all labels are OK, and generate a review if needed,
