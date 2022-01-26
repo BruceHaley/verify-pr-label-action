@@ -170,7 +170,7 @@ else:
                 forbidden_label = label
 
         if forbidden_label != "":
-            print('Error! Label is not allowed to target this repo: '
+            print('Error! Parity label is not allowed to target this repo: '
                 f'{forbidden_label}', file=sys.stderr)
 
             print('Exiting with an error code')
