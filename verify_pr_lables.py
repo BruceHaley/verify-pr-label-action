@@ -152,7 +152,7 @@ if not pr_valid_labels:
 else:
     parity_label_conflict = False
     for label in pr_valid_labels:
-        if "no parity" in label.name.lower():
+        if "no parity" in label.lower():
             # A "no parity" label must not be accompanied by other parity labels.
             parity_label_conflict = len(pr_valid_labels) > 1
 
